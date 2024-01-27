@@ -1,2 +1,14 @@
+# Ignore hidden files and directories
 .*
+*/
+
+# Ignore backup files
+..gitignore.un~
+.README.md.un~
+
+# Ignore virtual environment
 venv/
+
+# Ignore pycache
+__pycache__/
+
