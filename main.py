@@ -1,6 +1,11 @@
 from fastapi import FastAPI
-
 from api import users, courses, sections
+from db.db_setup import engine, Base, get_db
+from db.models import user, course
+
+# Create database tables for the User and Course models
+user.Base.metadata.create_all(bind=engine)
+course.Base.metadata.create_all(bind=engine)
 
 # Create an instance of the FastAPI class
 app = FastAPI(
@@ -17,6 +22,7 @@ app = FastAPI(
     },
 )
 
+# Include routers for different components of the API
 app.include_router(users.router)
 app.include_router(sections.router)
 app.include_router(courses.router)
